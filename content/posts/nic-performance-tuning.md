@@ -3,6 +3,7 @@ title: "网络接口卡性能调优实战"
 date: 2024-01-25T09:15:00Z
 draft: false
 tags: ["NIC", "网络优化", "性能调优"]
+categories: ["NIC"]
 summary: "深入分析网络接口卡（NIC）的性能调优方法，包括硬件配置、驱动优化和应用程序调优。"
 ---
 

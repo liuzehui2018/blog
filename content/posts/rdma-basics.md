@@ -3,6 +3,7 @@ title: "RDMA基础概念与实现原理"
 date: 2024-01-15T10:00:00Z
 draft: false
 tags: ["RDMA", "网络编程"]
+categories: ["RDMA"]
 summary: "深入理解RDMA（Remote Direct Memory Access）的基本概念、工作原理和在实际系统中的应用。"
 ---
 

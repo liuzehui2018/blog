@@ -3,6 +3,7 @@ title: "NCCL性能优化实践指南"
 date: 2024-01-20T14:30:00Z
 draft: false
 tags: ["NCCL", "AI", "分布式训练"]
+categories: ["NCCL"]
 summary: "深入分析NCCL（NVIDIA Collective Communications Library）的性能优化策略，包括通信模式选择和参数调优。"
 ---
 

@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="board">
+  {{ $cats := slice "RDMA" "NCCL" "NIC" "AI" }}
+  <div class="board-grid">
+  {{ range $cats }}
+    {{ $name := . }}
+    {{ $pages := where $.Site.RegularPages "Params.categories" "intersect" (slice $name) }}
+    {{ $count := len $pages }}
+    {{ $size := cond (gt $count 8) 64 (cond (gt $count 4) 52 (cond (gt $count 1) 40 32)) }}
+    <a class="board-item" href="/categories/{{ lower $name }}/">
+      <div class="icon" style="font-size: {{ $size }}px;">
+        {{ if eq $name "RDMA" }}⚡{{ else if eq $name "NCCL" }}🧩{{ else if eq $name "NIC" }}🌐{{ else }}🤖{{ end }}
+      </div>
+      <div class="label">{{ $name }} <span class="count">{{ $count }}</span></div>
+    </a>
+  {{ end }}
+  </div>
+</section>
+<style>
+.board { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+.board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+.board-item { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; background: var(--card-background); border-radius: 16px; text-decoration: none; color: inherit; box-shadow: var(--shadow-l2); transition: transform .15s ease; }
+.board-item:hover { transform: translateY(-2px); }
+.board-item .label { margin-top: .5rem; font-weight: 600; }
+.board-item .count { background: var(--badge-background); color: var(--badge-foreground); border-radius: 999px; padding: 2px 8px; font-size: .8rem; margin-left: .25rem; }
+.icon { line-height: 1; }
+@media (max-width: 600px) { .board-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+{{ end }}
