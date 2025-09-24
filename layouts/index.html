@@ -8,7 +8,8 @@
         {{ $sorted := sort $pages "Date" "desc" }}
         <div class="kanban-col">
             <div class="kanban-header">
-                <span class="kanban-icon">{{ if eq $name "RDMA" }}⚡{{ else if eq $name "NCCL" }}🧩{{ else if eq $name "NIC" }}🌐{{ else }}🤖{{ end }}</span>
+                <span class="kanban-icon">{{ if eq $name "RDMA" }}⚡{{ else if eq $name "NCCL" }}🧩{{ else if eq $name
+                    "NIC" }}🌐{{ else }}🤖{{ end }}</span>
                 <span class="kanban-title">{{ $name }}</span>
                 <span class="kanban-count">{{ len $sorted }}</span>
             </div>
@@ -26,20 +27,102 @@
     </div>
 </section>
 <style>
-    .kanban { max-width: 1400px; margin: 1.5rem auto; padding: 0 1rem; }
-    .kanban-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
-    .kanban-col { background: var(--card-background); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-l2); min-height: 200px; }
-    .kanban-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 700; }
-    .kanban-icon { font-size: 22px; line-height: 1; }
-    .kanban-title { flex: 1; }
-    .kanban-count { background: var(--badge-background); color: var(--badge-foreground); border-radius: 999px; padding: 2px 8px; font-size: .8rem; }
-    .kanban-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .kanban-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .kanban-link { text-decoration: none; color: inherit; flex: 1; }
-    .kanban-link:hover { color: var(--primary-foreground); }
-    .kanban-date { color: var(--muted-foreground); font-size: .8rem; white-space: nowrap; }
-    .kanban-more { display: inline-block; margin-top: 10px; font-size: .9rem; text-decoration: none; color: var(--primary-foreground); }
-    @media (max-width: 1024px) { .kanban-row { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .kanban-row { grid-template-columns: 1fr; } }
+    .kanban {
+        max-width: 1400px;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+    }
+
+    .kanban-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        align-items: start;
+    }
+
+    .kanban-col {
+        background: var(--card-background);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: var(--shadow-l2);
+        min-height: 200px;
+    }
+
+    .kanban-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .kanban-icon {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .kanban-title {
+        flex: 1;
+    }
+
+    .kanban-count {
+        background: var(--badge-background);
+        color: var(--badge-foreground);
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-size: .8rem;
+    }
+
+    .kanban-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .kanban-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .kanban-link {
+        text-decoration: none;
+        color: inherit;
+        flex: 1;
+    }
+
+    .kanban-link:hover {
+        color: var(--primary-foreground);
+    }
+
+    .kanban-date {
+        color: var(--muted-foreground);
+        font-size: .8rem;
+        white-space: nowrap;
+    }
+
+    .kanban-more {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: .9rem;
+        text-decoration: none;
+        color: var(--primary-foreground);
+    }
+
+    @media (max-width: 1024px) {
+        .kanban-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .kanban-row {
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
 {{ end }}
