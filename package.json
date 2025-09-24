@@ -1,0 +1,26 @@
+{
+    "name": "programming-blog",
+    "version": "1.0.0",
+    "description": "个人编程笔记博客 - RDMA、NCCL、NIC、AI技术分享",
+    "main": "index.js",
+    "scripts": {
+        "dev": "hugo server --buildDrafts --bind 0.0.0.0 --port 1313",
+        "build": "hugo --minify",
+        "clean": "rm -rf public resources",
+        "deploy": "hugo --minify && gh-pages -d public"
+    },
+    "keywords": [
+        "hugo",
+        "blog",
+        "programming",
+        "rdma",
+        "nccl",
+        "nic",
+        "ai"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "devDependencies": {
+        "gh-pages": "^6.0.0"
+    }
+}

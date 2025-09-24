@@ -1,0 +1,112 @@
+{{ define "main" }}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">{{ .Site.Title }}</h1>
+        <p class="hero-subtitle">{{ .Site.Params.description }}</p>
+    </div>
+</div>
+
+<div class="kanban-container">
+    <div class="kanban-board">
+        <!-- RDMA Column -->
+        <div class="kanban-column">
+            <div class="column-header">
+                <h3><i class="fas fa-network-wired"></i> RDMA</h3>
+                <span class="card-count">{{ len (where .Site.RegularPages "Params.tags" "intersect" (slice "RDMA"))
+                    }}</span>
+            </div>
+            <div class="column-content">
+                {{ range where .Site.RegularPages "Params.tags" "intersect" (slice "RDMA") }}
+                <div class="kanban-card">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <p class="card-excerpt">{{ .Summary | truncate 100 }}</p>
+                    <div class="card-meta">
+                        <span class="card-date">{{ .Date.Format "2006-01-02" }}</span>
+                        <div class="card-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+        <!-- NCCL Column -->
+        <div class="kanban-column">
+            <div class="column-header">
+                <h3><i class="fas fa-microchip"></i> NCCL</h3>
+                <span class="card-count">{{ len (where .Site.RegularPages "Params.tags" "intersect" (slice "NCCL"))
+                    }}</span>
+            </div>
+            <div class="column-content">
+                {{ range where .Site.RegularPages "Params.tags" "intersect" (slice "NCCL") }}
+                <div class="kanban-card">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <p class="card-excerpt">{{ .Summary | truncate 100 }}</p>
+                    <div class="card-meta">
+                        <span class="card-date">{{ .Date.Format "2006-01-02" }}</span>
+                        <div class="card-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+        <!-- NIC Column -->
+        <div class="kanban-column">
+            <div class="column-header">
+                <h3><i class="fas fa-ethernet"></i> NIC</h3>
+                <span class="card-count">{{ len (where .Site.RegularPages "Params.tags" "intersect" (slice "NIC"))
+                    }}</span>
+            </div>
+            <div class="column-content">
+                {{ range where .Site.RegularPages "Params.tags" "intersect" (slice "NIC") }}
+                <div class="kanban-card">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <p class="card-excerpt">{{ .Summary | truncate 100 }}</p>
+                    <div class="card-meta">
+                        <span class="card-date">{{ .Date.Format "2006-01-02" }}</span>
+                        <div class="card-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+
+        <!-- AI Column -->
+        <div class="kanban-column">
+            <div class="column-header">
+                <h3><i class="fas fa-robot"></i> AI</h3>
+                <span class="card-count">{{ len (where .Site.RegularPages "Params.tags" "intersect" (slice "AI"))
+                    }}</span>
+            </div>
+            <div class="column-content">
+                {{ range where .Site.RegularPages "Params.tags" "intersect" (slice "AI") }}
+                <div class="kanban-card">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <p class="card-excerpt">{{ .Summary | truncate 100 }}</p>
+                    <div class="card-meta">
+                        <span class="card-date">{{ .Date.Format "2006-01-02" }}</span>
+                        <div class="card-tags">
+                            {{ range .Params.tags }}
+                            <span class="tag tag-{{ . | lower }}">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

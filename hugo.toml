@@ -1,0 +1,22 @@
+baseURL = 'https://yourusername.github.io/programming-blog/'
+languageCode = 'zh-cn'
+title = 'Programming Notes Blog'
+theme = 'kanban-blog'
+
+[params]
+  description = "个人编程笔记博客 - RDMA、NCCL、NIC、AI技术分享"
+  author = "Your Name"
+
+[menu]
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 2
+  [[menu.main]]
+    name = "Lab"
+    url = "/lab/"
+    weight = 3
