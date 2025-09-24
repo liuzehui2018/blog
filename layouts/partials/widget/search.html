@@ -1,0 +1,46 @@
+{{- /* Custom inline search widget with dropdown results */ -}}
+<div class="widget-search">
+  <input id="q-inline" type="search" placeholder="搜索标题或正文…" autocomplete="off" />
+  <ul id="q-dropdown" class="dropdown"></ul>
+</div>
+<script>
+(function(){
+  async function load(){
+    const input = document.getElementById('q-inline');
+    const list = document.getElementById('q-dropdown');
+    if(!input||!list) return;
+    const res = await fetch(new URL('{{ "index.json" | relURL }}', document.baseURI));
+    const data = res.ok ? await res.json() : [];
+    const norm = s => (s||'').toLowerCase();
+    const match = (it,q) => norm(it.title).includes(q) || norm(it.summary).includes(q);
+    const render = (items)=>{
+      list.innerHTML='';
+      items.slice(0,10).forEach(it=>{
+        const li=document.createElement('li');
+        const a=document.createElement('a'); a.href=it.permalink; a.textContent=it.title;
+        const small=document.createElement('small'); small.textContent=' '+it.date;
+        li.appendChild(a); li.appendChild(small); list.appendChild(li);
+      });
+      list.style.display = items.length ? 'block' : 'none';
+    };
+    input.addEventListener('input', ()=>{
+      const q = norm(input.value.trim());
+      if(!q){ list.style.display='none'; list.innerHTML=''; return; }
+      render(data.filter(it=>match(it,q)));
+    });
+    document.addEventListener('click', (e)=>{
+      if(!list.contains(e.target) && e.target !== input){ list.style.display='none'; }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', load);
+})();
+</script>
+<style>
+.widget-search{ position: relative; }
+.widget-search input{ width:100%; padding:.5rem .75rem; border:1px solid var(--border); border-radius:10px; background:var(--card-background); color:inherit; }
+.widget-search .dropdown{ position:absolute; top:110%; left:0; right:0; background:var(--card-background); border:1px solid var(--border); border-radius:10px; padding:.5rem; margin:0; list-style:none; box-shadow:var(--shadow-l2); max-height:60vh; overflow:auto; display:none; z-index:999; }
+.widget-search .dropdown li{ padding:.25rem 0; display:flex; align-items:center; gap:.5rem; }
+.widget-search .dropdown a{ text-decoration:none; color:inherit; }
+.widget-search .dropdown a:hover{ color:var(--primary-foreground); }
+.widget-search .dropdown small{ color:var(--muted-foreground); }
+</style>

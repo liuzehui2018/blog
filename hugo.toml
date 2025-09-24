@@ -58,3 +58,7 @@ type = "toc"
     name = "Lab"
     url = "/lab/"
     weight = 3
+  [[menu.main]]
+    name = "Search 🔍"
+    url = "/search/"
+    weight = 4
