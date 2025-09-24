@@ -5,6 +5,7 @@
 </div>
 <script>
 (function(){
+  function debounce(fn, delay){ let t; return function(){ const a=arguments, c=this; clearTimeout(t); t=setTimeout(()=>fn.apply(c,a), delay); }; }
   async function load(){
     const input = document.getElementById('q-inline');
     const list = document.getElementById('q-dropdown');
@@ -13,7 +14,9 @@
     const data = res.ok ? await res.json() : [];
     const norm = s => (s||'').toLowerCase();
     const match = (it,q) => norm(it.title).includes(q) || norm(it.summary).includes(q);
+    let current = [];
     const render = (items)=>{
+      current = items;
       list.innerHTML='';
       items.slice(0,10).forEach(it=>{
         const li=document.createElement('li');
@@ -23,10 +26,17 @@
       });
       list.style.display = items.length ? 'block' : 'none';
     };
-    input.addEventListener('input', ()=>{
+    const onInput = ()=>{
       const q = norm(input.value.trim());
       if(!q){ list.style.display='none'; list.innerHTML=''; return; }
       render(data.filter(it=>match(it,q)));
+    };
+    input.addEventListener('input', debounce(onInput, 120));
+    input.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        if(current && current.length){ window.location.href = current[0].permalink; }
+      }
     });
     document.addEventListener('click', (e)=>{
       if(!list.contains(e.target) && e.target !== input){ list.style.display='none'; }
