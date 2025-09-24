@@ -7,7 +7,7 @@ DefaultContentLanguage = 'zh-cn'
 
 [params]
   description = "个人编程笔记博客 - RDMA、NCCL、NIC、AI技术分享"
-  
+
   # Author info for Stack's RSS and metadata
   [params.author]
     name = "Your Name"
@@ -22,7 +22,7 @@ DefaultContentLanguage = 'zh-cn'
 
 [params.widgets]
   # Homepage widgets
-  
+
 [[params.widgets.homepage]]
 type = "search"
 
