@@ -21,7 +21,7 @@
                 </li>
                 {{ end }}
             </ul>
-            <a class="kanban-more" href="/categories/{{ lower $name }}/">更多 →</a>
+            <a class="kanban-more" href="{{ (printf " categories/%s/" (lower $name)) | relURL }}">更多 →</a>
         </div>
         {{ end }}
     </div>

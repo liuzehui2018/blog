@@ -20,6 +20,12 @@ DefaultContentLanguage = 'zh-cn'
   tag = "tags"
   category = "categories"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
 [params.widgets]
   # Homepage widgets
 
