@@ -1,11 +1,19 @@
 baseURL = 'https://liuzehui2018.github.io/blog/'
 languageCode = 'zh-cn'
 title = 'Programming Notes Blog'
-theme = 'kanban-blog'
+theme = 'hugo-theme-stack'
+paginate = 10
+DefaultContentLanguage = 'zh-cn'
+
 
 [params]
   description = "个人编程笔记博客 - RDMA、NCCL、NIC、AI技术分享"
   author = "Your Name"
+  mainSections = ["posts"]
+  article = { toc = true, readingTime = true }
+  widgets = { homepage = ["search", "categories", "tags"], page = ["toc"] }
+  sidebar = { emoji = "🧠", subtitle = "RDMA / NCCL / NIC / AI" }
+  imageProcessing = { cover = true }
 
 [menu]
   [[menu.main]]
