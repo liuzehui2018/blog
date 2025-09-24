@@ -25,6 +25,13 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Ensure working tree clean (CI guard)
+        run: |
+          if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Untracked files detected:"; git ls-files --others --exclude-standard; exit 1; fi
+          if ! git diff --quiet; then
+            echo "Unstaged changes detected:"; git status -s; exit 1; fi
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
