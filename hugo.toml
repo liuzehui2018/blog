@@ -1,4 +1,4 @@
-baseURL = 'https://yourusername.github.io/programming-blog/'
+baseURL = 'https://liuzehui2018.github.io/blog/'
 languageCode = 'zh-cn'
 title = 'Programming Notes Blog'
 theme = 'kanban-blog'
